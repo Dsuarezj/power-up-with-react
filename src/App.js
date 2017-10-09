@@ -19,4 +19,11 @@ class App extends React.Component{
 }
 
 
+class Clock extends React.Component{
+    render(){
+        return <div>El timepo actual es:</div>
+    }
+
+}
+
 export default App;
