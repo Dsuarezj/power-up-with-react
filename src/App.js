@@ -10,20 +10,9 @@ class App extends React.Component{
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
-}
-
-
-class Clock extends React.Component{
-    render(){
-        return <div>El timepo actual es:</div>
-    }
-
 }
 
 export default App;
