@@ -4,11 +4,12 @@ import Comment from "./Comment";
 
 class CommentBox extends React.Component {
     render() {
-        const comments = this._getComments();
+        const comments = this._getComments() || [];
         const commentsTittle = this._getCommentsTittle(comments.length);
         return (
             <div className="comment-box">
                 <h3>Comments</h3>
+                {this._getPopularMessage(comments.length)}
                 <h4 className="comment-count"> {commentsTittle}</h4>
                 <div className="comment-list">
                     {comments}
@@ -20,11 +21,35 @@ class CommentBox extends React.Component {
     _getComments() {
         const commentList = [
             {id: 1, author: 'Anonimo 101', body: 'primer comentario'},
-            {id: 2, author: 'Anonimo 202', body: 'segundo comentario'}
+            {id: 2, author: 'Anonimo 202', body: 'segundo comentario'},
+            {id: 3, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 4, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 5, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 6, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 7, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 8, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 9, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 10, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 11, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 12, author: 'Anonimo 303', body: 'tercer comentario'},
         ];
         return commentList.map((comment) => {
-            return <Comment author={comment.author} body={comment.body} key={comment.id}/> //Key helps react to keep track which element is which in the loop, is a good practice to pass a unique number for this key
+            return (<Comment
+                author={comment.author}
+                body={comment.body}
+                key={comment.id}/>); //Key helps react to keep track which element is which in the loop, is a good practice to pass a unique number for this key
         });
+    }
+
+    _getPopularMessage(commentCount) {
+        const POPULAR_COUNT = 10;
+        if (commentCount > POPULAR_COUNT) {
+            return (
+                <div>
+                    This post is getting really popular, don't miss out!
+                </div>
+            );
+        }
     }
 
     _getCommentsTittle(commentCount) {
@@ -33,7 +58,7 @@ class CommentBox extends React.Component {
         } else if (commentCount === 1) {
             return "1 comment";
         } else {
-            return `${commentCount} comments` ;
+            return `${commentCount} comments`;
         }
     }
 
