@@ -22,16 +22,7 @@ class CommentBox extends React.Component {
         const commentList = [
             {id: 1, author: 'Anonimo 101', body: 'primer comentario'},
             {id: 2, author: 'Anonimo 202', body: 'segundo comentario'},
-            {id: 3, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 4, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 5, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 6, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 7, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 8, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 9, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 10, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 11, author: 'Anonimo 303', body: 'tercer comentario'},
-            {id: 12, author: 'Anonimo 303', body: 'tercer comentario'},
+            {id: 3, author: 'Anonimo 303', body: 'tercer comentario'}
         ];
         return commentList.map((comment) => {
             return (<Comment
