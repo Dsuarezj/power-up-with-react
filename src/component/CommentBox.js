@@ -3,19 +3,39 @@ import Comment from "./Comment";
 
 
 class CommentBox extends React.Component {
+
+
+    constructor() {
+        super();
+        this.state = {
+            showComments: false
+        };
+    }
+
     render() {
         const comments = this._getComments() || [];
         const commentsTittle = this._getCommentsTittle(comments.length);
+        let buttonText = "Show comments";
+        let commentNodes;
+        if (this.state.showComments) {
+            buttonText = "Hide comments";
+            commentNodes = <div className="comment-list"> {comments} </div>;
+        }
         return (
             <div className="comment-box">
                 <h3>Comments</h3>
+                <button onClick={this._handleClick.bind(this)}>{buttonText}</button>
                 {this._getPopularMessage(comments.length)}
                 <h4 className="comment-count"> {commentsTittle}</h4>
-                <div className="comment-list">
-                    {comments}
-                </div>
+                {commentNodes}
             </div>
         );
+    }
+
+    _handleClick() {
+        this.setState({
+            showComments: !this.state.showComments
+        });
     }
 
     _getComments() {
