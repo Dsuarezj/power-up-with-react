@@ -1,5 +1,6 @@
 import React from "react";
 import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 
 
 class CommentBox extends React.Component {
@@ -8,7 +9,12 @@ class CommentBox extends React.Component {
     constructor() {
         super();
         this.state = {
-            showComments: false
+            showComments: false,
+            comments: [
+                {id: 1, author: 'Anonimo 101', body: 'primer comentario'},
+                {id: 2, author: 'Anonimo 202', body: 'segundo comentario'},
+                {id: 3, author: 'Anonimo 303', body: 'tercer comentario'}
+            ]
         };
     }
 
@@ -23,6 +29,7 @@ class CommentBox extends React.Component {
         }
         return (
             <div className="comment-box">
+                <CommentForm addComment={this._addComment.bind(this)}/>
                 <h3>Comments</h3>
                 <button onClick={this._handleClick.bind(this)}>{buttonText}</button>
                 {this._getPopularMessage(comments.length)}
@@ -32,6 +39,15 @@ class CommentBox extends React.Component {
         );
     }
 
+    _addComment(author, body) {
+        const comment ={
+            id: this.state.comments.length + 1,
+            author,
+            body
+        };
+        this.setState({comments: this.state.comments.concat([comment])});
+    }
+
     _handleClick() {
         this.setState({
             showComments: !this.state.showComments
@@ -39,12 +55,7 @@ class CommentBox extends React.Component {
     }
 
     _getComments() {
-        const commentList = [
-            {id: 1, author: 'Anonimo 101', body: 'primer comentario'},
-            {id: 2, author: 'Anonimo 202', body: 'segundo comentario'},
-            {id: 3, author: 'Anonimo 303', body: 'tercer comentario'}
-        ];
-        return commentList.map((comment) => {
+        return this.state.comments.map((comment) => {
             return (<Comment
                 author={comment.author}
                 body={comment.body}
