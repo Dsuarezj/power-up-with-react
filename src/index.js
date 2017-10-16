@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import App from './component/App';
-import Clock from './component/Clock';
-import ListOfElements from './component/ListOfElements';
-import Selector from './component/Selector';
+import App from './components/App';
+import Clock from './components/Clock';
+import ListOfElements from './components/ListOfElements';
+import Selector from './components/Selector';
 import registerServiceWorker from './registerServiceWorker';
-import CommentBox from "./component/CommentBox";
+import CommentBox from "./components/CommentBox";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<Clock />, document.getElementById('clock'));
